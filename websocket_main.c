@@ -66,7 +66,7 @@ void cJSON_login_rsp(char *json)
 		break;
 		
 	      	case CID_E2E_DOWN:
-                    xun_e2e_phone_to_watch(json);
+                    xun_e2e_phone_to_watch(json_data);
               break;
 		
 		default:
