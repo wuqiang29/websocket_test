@@ -606,7 +606,7 @@ int Xun_App_Loop(void)
 
 	pMsg = (XUN_MSG_HDR_T*)mesg_buf;
 
-	printf("into loop*********\n");
+	printf("*********into loop*********\n");
 	while(1){
 		
 	UINT enter_tick=0,exit_tick;

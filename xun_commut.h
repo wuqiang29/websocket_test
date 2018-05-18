@@ -7,7 +7,7 @@
 // [dengxu start] add for code managment by features
 //#include "xun_features.h"
 // [dengxu end]
-
+int ApkSN = 123456;
 #define    MAX_IP_LEN           256
 #define    MAX_DOMAIN_NAME_LEN  256
 #define    MAX_ACCOUNT_LEN      128
@@ -939,7 +939,11 @@ typedef struct
 	int  time_interval;
 } location_test_struct;
 
-
+typedef struct 
+{
+	xun_bind_status watch_bind_status; /* -2:not bind;	-1:binding step 1;0 binding step 2;	1:bind sc */
+	int deviceset_is_suc;
+}xun_watch_user_info_t;
 
 
 #endif

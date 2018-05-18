@@ -35,32 +35,42 @@ pthread_cond_t cond_Send = PTHREAD_COND_INITIALIZER;/*初始化条件变量*/
 void cJSON_login_rsp(char *json)
 {
 	cJSON *json_PL, *json_data, *gid_PL;
-    int rc,cid;
+  	 int rc,cid;
 
 	json_data = cJSON_Parse(json);
 	
 	//cJSON_GetObjectItem(json_data, "CID")->valueint;
-	rc = cJSON_GetObjectItem(json_data, "RC")->valueint;
+	//rc = cJSON_GetObjectItem(json_data, "RC")->valueint;
 
 	cid = cJSON_GetObjectItem(json_data,"CID")->valueint;
 	
 
-	if(rc<0){
-		printf("message return rc = %d, something error!\n",rc);
+	//if(rc<0){
+		//printf("message return rc = %d, something error!\n",rc);
 		//return;
-	}
+	//}
 	
 	switch(cid){
 		case 70012:
 		break;
 		
 		case 10212:
-		strcpy(WatchSID, cJSON_GetObjectItem(json_data, "SID")->valuestring);
+		rc = cJSON_GetObjectItem(json_data, "RC")->valueint;
 
-		
+		if(rc<0){
+			printf("message return rc = %d, something error!\n",rc);
+			return;
+		}
+		strcpy(WatchSID, cJSON_GetObjectItem(json_data, "SID")->valuestring);
+	
 		break;
 		
+	      	case CID_E2E_DOWN:
+                    xun_e2e_phone_to_watch(json);
+              break;
+		
 		default:
+
 		break;
 	}
 	//memset(WatchSID,0,sizeof(WatchSID));
@@ -85,7 +95,7 @@ int WebSocket_Com_Data(char* in)
 			list_p->json = in;
 			list_p->next = NULL;
 			recieve_data = list_p;
-			printf("list_data###%s\n",list_p->json);
+			//printf("list_data###%s\n",list_p->json);
 			return 0;
 	}else {
 
@@ -253,8 +263,8 @@ static int WebSocket_service_callback(struct lws* wsi, enum lws_callback_reasons
 
 		//how to deal with  the coming data?
 		//first put the date into a list
-		WebSocket_Com_Data(in);
-		//cJSON_login_rsp((char*)in);
+		//WebSocket_Com_Data(in);
+		cJSON_login_rsp((char*)in);
 			
             break;
 

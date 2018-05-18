@@ -2,7 +2,7 @@ TARGET = websocket
 
 INCLUDES  += -I/usr/local/include
 
-CFLAGS	 += -lpthread -lwebsockets -lm -lssl
+CFLAGS	 += -lpthread -lwebsockets -lm -lssl -lcrypto
 
 #LDFLAGS := -L$(STAGING_DIR)/usr/lib
 
