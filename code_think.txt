@@ -1,0 +1,2 @@
+XUN_GetTaskId(char* name) 获取线程taskid
+1.首先获取本进程的appInfo，进程appInfo中有包含线程task信息
