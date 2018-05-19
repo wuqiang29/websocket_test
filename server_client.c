@@ -7,6 +7,7 @@
 
 #define WATCHN  "78:11:DC:94:03:83"
 
+int ApkSN = 123456;
 
 char  PhoneEID[40] = "PHONEEID";
 extern char WatchSID[40];
@@ -103,7 +104,7 @@ char* cJSON_little_ping(void)
 }
 
 
-void xun_e2e_phone_to_watch( cJSON* e2e_msg )
+void xun_e2e_phone_to_watch(cJSON* e2e_msg )
 {
     cJSON* PL = NULL;
     int sub_action;
@@ -311,7 +312,7 @@ void xun_e2e_phone_to_watch( cJSON* e2e_msg )
 		//if(ret >= 0){
 			//xun_sort_contact_list();
 			//xun_contact_save_list();
-		}
+	//	}
 		break;
 	}
 
@@ -323,7 +324,6 @@ void xun_e2e_phone_to_watch( cJSON* e2e_msg )
 		break;
 	}
 #endif
-
 	case SUB_ACTION_REQ_BALANCE_INQUIRY:
 		{
 		//	xun_balance_inquiry_rsp(xun_balance_inquiry(PL),tmp_oppo_info.sn);

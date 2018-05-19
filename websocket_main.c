@@ -15,6 +15,7 @@ websocket function
 #include "xun_action.h"
 #include "server_client.h"
 #include "timer_mana.h"
+#include "xun_commut.h"
 
 
 char WatchSID[40]={0};

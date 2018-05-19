@@ -1,5 +1,7 @@
 #ifndef _XUN_BIND_H
 #define _XUN_BIND_H
+#include "cJSON.h"
+
 
 #define BING_TIMEOUT_TIME_CNT	57
 #define BING_TIMEOUT_TIME (1000)
@@ -23,6 +25,13 @@ typedef enum
 }xun_bind_status;
 
 
+typedef struct 
+{
+	xun_bind_status watch_bind_status; /* -2:not bind;	-1:binding step 1;0 binding step 2;	1:bind sc */
+	int deviceset_is_suc;
+}xun_watch_user_info_t;
+
+
 xun_bind_status xun_get_bind_status(void);
-void xun_bind_handle_bind_req( cJSON* e2e_msg );
+void xun_bind_handle_bind_req(cJSON* e2e_msg);
 #endif

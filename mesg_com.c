@@ -329,7 +329,7 @@ INT Xun_AppSendMsg(XUN_APP_ID desApp, XUN_MSG_TYPE type, XUN_MSG_PRI pri, void* 
 	XUN_MSG_HDR_T* pHdr = NULL;
 	int ret = 0;
 	XUN_TASK_INFO_T* taskInfo = Xun_GetTaskInfo(Xun_GetTaskId(NULL));
-	XUN_TASK_INFO_T* appInfo = Xun_GetAppInfo();
+	XUN_APP_INFO_T* appInfo = Xun_GetAppInfo();
 
 	if(taskInfo)
 		{

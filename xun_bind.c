@@ -125,7 +125,7 @@ xun_bind_status xun_get_bind_status(void)
     return g_watch_user_info.watch_bind_status;
 }
 
-void xun_bind_handle_bind_req( cJSON* e2e_msg )
+void xun_bind_handle_bind_req(cJSON* e2e_msg)
 {
     /*----------------------------------------------------------------*/
     /* Local Variables                                                */
