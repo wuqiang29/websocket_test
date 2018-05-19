@@ -5,13 +5,39 @@ static xun_watch_user_info_t g_watch_user_info = {0};
 static cJSON* g_xun_dl_bind_msg = NULL ;
 
 
+
+int xun_get_phone_group_eid_list(group_members_t* phone_group , int only_required, char* required_phone_eid)
+{
+    char filename;
+		
+    printf("[com] bbwatch_get_phone_group_eid_list required_phone_eid=%x only_required=%d\n",  required_phone_eid, only_required);
+	if( NULL == phone_group )
+	{	
+	       printf("[com] phone_group is null\n");
+	       return  RC_FAIL;
+	}
+
+        if( NULL != required_phone_eid ) 
+        {
+              printf("[com] only add required eid\n");
+		 phone_group->count = 0;
+		 //phone_group->eid_list[0] = (VMSTR)BB_MemAlloc(MAX_EID_LEN);
+		 phone_group->eid_list[0] = (char*)malloc(MAX_EID_LEN);
+		 strcpy( phone_group->eid_list[0] , required_phone_eid );
+		 phone_group->count++;
+        }
+        return RC_SUCCESS;
+	
+}
+
+
 int xun_bind_send_accept_ret_to_phone(void)
 {
     /*----------------------------------------------------------------*/
     /* Local Variables                                                */
     /*----------------------------------------------------------------*/
     int  result = RC_FAIL;
-   char* seid = NULL;
+    char* seid = NULL;
     int src_sn = 0;
     cJSON* new_pl , *org_pl;
     int  only_add_required_eid = FALSE;
@@ -39,7 +65,7 @@ int xun_bind_send_accept_ret_to_phone(void)
     
     if( xun_get_phone_group_eid_list( &phone_group , only_add_required_eid ,  seid ) < RC_SUCCESS )
     {
-        xun_log_out("[bind] get eid list failed ");
+        printf("[bind] get eid list failed\n");
         return RC_FAIL;
     }
     new_pl = cJSON_Duplicate( org_pl , 1 );
@@ -55,7 +81,7 @@ cJSON* xun_cache_dl_bind_msg( cJSON* src_msg )
     if( src_msg )
     {        
         printf("[bind]save cached data\n");
-        g_xun_dl_bind_msg = cJSON_Duplicate ( src_msg , 1  );
+        g_xun_dl_bind_msg = cJSON_Duplicate(src_msg, 1);
         return g_xun_dl_bind_msg;
     }
 
@@ -93,10 +119,10 @@ int  xun_bind_send_accept_ret()
     }
     else
     {
-        XUN_TRACE_EX("[bind]xun_bind_send_accept_ret--end data error");
+        printf("[bind]xun_bind_send_accept_ret--end data error\n");
     }
 
-    XUN_TRACE_EX("[bind]xun_bind_send_accept_ret--end--ret=%d",ret);
+    printf("[bind]xun_bind_send_accept_ret--end--ret=%d\n",ret);
     return ret;
 }
 
