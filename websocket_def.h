@@ -21,8 +21,7 @@ typedef struct lws_protocols				LWS_PROTOCOLS;
 typedef struct {
 	int connected;
 	int destroy;
-	int writeable;	
-	
+	int writeable;		
 }LOCAL_WEBS_CONN;
 
 /*
@@ -72,7 +71,7 @@ typedef struct  server_mesg{
 */
 typedef struct mesg_list{	
 	char* json;
-	 int data_len; 
+	int data_len; 
 	struct mesg_list *next;	
 }MESG_LIST;
 

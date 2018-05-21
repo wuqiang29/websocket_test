@@ -39,7 +39,7 @@ static void timer_list_add(OS_TIMER_LIGHT_T*  pt_timer)
 			tmp_list->previous->next = pt_timer;
 			tmp_list->previous = pt_timer;
 	}
-	else
+	else		
 		{
 			s_timer_list = pt_timer;
 			pt_timer->next =pt_timer;

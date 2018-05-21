@@ -185,7 +185,7 @@ INT Xun_TaskEntry(UINT taskIndex)
 		{
 			//setpriority(0, 0, (UINT)AppCfg->tasks[taskIndex].priority - 20);
 			AppCfg->tasks[taskIndex].pid = getpid();
-			AppCfg->tasks[taskIndex].stackBaseAddr = (UINT)&AppCfg + 32;
+			AppCfg->tasks[taskIndex].stackBaseAddr = ((UINT)&AppCfg) + 32;
 			Xun_Unlock_Op(AppCfg->lockId);
 			(*((XUN_TASK_ENTRY)AppCfg->tasks[taskIndex].pEntryFn))(AppCfg->tasks[taskIndex].pPara);
 			Xun_Lock_Op(AppCfg->lockId, 0);

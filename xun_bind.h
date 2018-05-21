@@ -32,6 +32,13 @@ typedef struct
 }xun_watch_user_info_t;
 
 
+typedef struct mesg_list{	
+	char* json;
+	int data_len; 
+	struct mesg_list *next;	
+}MESG_LIST;
+
 xun_bind_status xun_get_bind_status(void);
 void xun_bind_handle_bind_req(cJSON* e2e_msg);
+
 #endif

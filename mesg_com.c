@@ -544,8 +544,8 @@ int Xun_App_Init(unsigned int argc, char* argv[], XUN_APP_ID appId, const char* 
 	strcpy(appInfo->name, appName);
 	appInfo->state = XUN_APPL_STATE_INIT;
 	appInfo->msgQId = App_CreateMsgQ(appId,0,0);
-	printf("***********************\n");
-	printf("appInfo->msgQId [%d]##################\n",appInfo->msgQId );
+	printf("***********************");
+	printf("appInfo->msgQId [%d]***********************\n",appInfo->msgQId );
 	
     for (taskIndex = 0; taskIndex < XUN_MAX_TASKS_PER_APP; taskIndex++)
     {

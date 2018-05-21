@@ -487,7 +487,7 @@ typedef enum
 #define KEY_NAME_MF_USER_GID    		 "user_gid"
 #define KEY_NAME_MF_FRIEND_EID    		 "FriendEid"
 #endif
-#define ACCESS_KEY "74CECB85AE17BB85C56FFA91FE33F6E0"
+#define ACCESS_KEY                              "74CECB85AE17BB85C56FFA91FE33F6E0"
 
 
 #define PROTOCOL_VER  "00030000"

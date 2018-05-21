@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <openssl/md5.h>
+
 #include "xun_bind.h"
 #include "cJSON.h"
 #include "xun_commut.h"
@@ -11,6 +12,8 @@ int ApkSN = 123456;
 
 char  PhoneEID[40] = "PHONEEID";
 extern char WatchSID[40];
+
+//extern void xun_bind_handle_bind_req(cJSON* e2e_msg);
 
 void printHex(unsigned char *hex, int length,char* md5)
 {
@@ -230,7 +233,7 @@ void xun_e2e_phone_to_watch(cJSON* e2e_msg )
             	}
 
                 xun_audio_play_search_tone(1);
-				#endif
+#endif
 				
                 break;
 				

@@ -36,5 +36,6 @@ INT App_RecvFromMsgQ(XUN_MSG_Q_ID msgId, void* pMsgHdr, unsigned int uiMaxBytes,
 int Xun_App_Start(XUN_APP_INIT_PTR pInitFn, void* pInitPara, XUN_APP_MSG_HANDLER_PTR pMsgHandlerFn, XUN_APP_DE_INIT_PTR pDeinitFn);
 
 int Xun_App_Init(unsigned int argc, char* argv[], XUN_APP_ID appId, const char* appName);
+INT Xun_ResponseSyncMsg(XUN_APP_ID desApp, void* pReqData, XUN_MSG_TYPE type, void* pData, UINT dataLen);
 
 #endif

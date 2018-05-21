@@ -587,7 +587,7 @@ int WebSocket_Handle_Msg(void* data, XUN_MSG_TYPE type, XUN_MSG_PRI pri, XUN_APP
 						int send_len = strlen(buffer);
 						int recode = 666;
 						//Xun_AppSendMsg(XUN_APPID_TEST,  LOGIN, APP_MSG_PRI_NORMAL, buffer, send_len);
-						Xun_ResponseSyncMsg(XUN_APPID_TEST, data, type, &recode, sizeof(int));
+						Xun_ResponseSyncMsg(XUN_APPID_TEST, data, type, &recode, 4);
 				}
 
 				break;
