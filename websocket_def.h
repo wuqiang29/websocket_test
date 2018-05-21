@@ -4,7 +4,8 @@
 
 #include <libwebsockets.h>
 
-#define WEBSOCKET_SERVER_DOMAIN			"test.imibaby.net"
+#define WEBSOCKET_SERVER_DOMAIN			"sw502b-a02.imibaby.net"
+//#define WEBSOCKET_SERVER_DOMAIN			"test.imibaby.net"
 #define WEBSOCKET_SERVER_PORT				(8255)
 #define WEBSOCKET_SERVER_PATH				"/svc/pipe"
 #define WEBSOCKET_SSL_CA_PATH			"imibaby.net.pem"

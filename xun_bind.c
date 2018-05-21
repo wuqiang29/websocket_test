@@ -290,7 +290,7 @@ int  xun_bind_send_accept_ret()
 
 xun_bind_status xun_get_bind_status(void)
 {
-    printf("[bind]xun_get_bind_status--(%d)",g_watch_user_info.watch_bind_status);
+    printf("[bind]xun_get_bind_status--(%d)\n",g_watch_user_info.watch_bind_status);
     return g_watch_user_info.watch_bind_status;
 }
 
@@ -304,6 +304,7 @@ void xun_bind_handle_bind_req(cJSON* e2e_msg)
     /*----------------------------------------------------------------*/
     /* Code Body                                                                                               */
     /*----------------------------------------------------------------*/
+	 g_watch_user_info.watch_bind_status = bind_status;
     bind_status = xun_get_bind_status();
     printf("[bind]xun_bind_handle_bind_req--bind status =%d\n", bind_status);
     if((BIND_STATUS_NOT_BIND == bind_status)||(BIND_STATUS_BIND_SUCCESS == bind_status))
@@ -331,7 +332,7 @@ void xun_bind_handle_bind_req(cJSON* e2e_msg)
 	 	{
        	 printf("[bind]xun_bind_send_accept_ret--end data error\n");
 	 }
-	 xun_bind_send_accept_ret();
+	// xun_bind_send_accept_ret();
 	//XUN_TRACE_EX("[bind]xun_bind_send_accept_ret--end--ret=%d",ret);
 	//xun_bind_notify_user_confirm();
 	//#if defined(__XUN_UI_SCR_SUPPORT__) || defined(__XUN_MMI_COMMON_APP__)

@@ -233,7 +233,7 @@ int WebSocket_Data_Send(void)
 	send_data = NULL;
 	pthread_mutex_unlock(&send_data_mutex);
 	
-	return 0;
+	return 1;
 }
 
 static int WebSocket_service_callback(struct lws* wsi, enum lws_callback_reasons reason, void *user, void *in, size_t len)
@@ -394,7 +394,7 @@ void WebSocket_Little_Ping(int argc)
 
 	WebSocket_Send_Data_addlist((void*)data);
 	ret = WebSocket_Data_Send();
-	if(ret == 0)
+	if(ret == 1)
 		{
 			return;
 	}
