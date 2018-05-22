@@ -70,7 +70,7 @@ char* xun_tcp_compose_message( int  cid , cJSON* pl , int sn , char* gid , group
             return NULL;
         }
 
-        json_msg = xun_tcp_compose_message_basic( cid  ,  sn );
+        json_msg = xun_tcp_compose_message_basic(cid,  sn);
 
         if( gid != NULL )
         {
@@ -145,7 +145,7 @@ int xun_e2e_message(cJSON* e2e_pl, int subAction, int src_sn, group_members_t* t
 
 
 	
-	data = (MESG_LIST*) malloc(sizeof(MESG_LIST));
+	data = (MESG_LIST*)malloc(sizeof(MESG_LIST));
 	memset(data, 0x00, sizeof(MESG_LIST));
 	data->data_len = send_len;
 	data->json = sendBuff;
@@ -177,9 +177,10 @@ int xun_get_phone_group_eid_list(group_members_t* phone_group , int only_require
               printf("[com] only add required eid\n");
 		 phone_group->count = 0;
 		 //phone_group->eid_list[0] = (VMSTR)BB_MemAlloc(MAX_EID_LEN);
-		 phone_group->eid_list[0] = (char*)malloc(MAX_EID_LEN);
-		 memset((char*)phone_group->eid_list[0],0x00,MAX_EID_LEN);
-		 strcpy( phone_group->eid_list[0] , required_phone_eid );
+		 //phone_group->eid_list[0] = (char*)malloc(MAX_EID_LEN);
+		 phone_group->eid_list[0] = required_phone_eid;
+		 //memset((char*)phone_group->eid_list[0],0x00,MAX_EID_LEN);
+		 //strcpy( phone_group->eid_list[0] , required_phone_eid);
 		 phone_group->count++;
         }
         return RC_SUCCESS;
@@ -208,18 +209,18 @@ int xun_bind_send_accept_ret_to_phone(void)
         return RC_FAIL;
     }
     
-    org_pl = cJSON_GetObjectItem( g_xun_dl_bind_msg , KEY_NAME_PL );
+    org_pl = cJSON_GetObjectItem(g_xun_dl_bind_msg , KEY_NAME_PL);
     if( NULL == org_pl  )
     {
-        printf("[bind] org pl invalid : %s\n" , cJSON_GetErrorPtr( ));
+        printf("[bind] org pl invalid : %s\n" , cJSON_GetErrorPtr());
         return RC_FAIL;
     }
-    seid = cJSON_GetObjectItem( g_xun_dl_bind_msg , KEY_NAME_SEID )->valuestring;
-    printf("[bind] SEID = %s" , seid  );
-    src_sn = cJSON_GetObjectItem( g_xun_dl_bind_msg , KEY_NAME_SN )->valueint;
+    seid = cJSON_GetObjectItem(g_xun_dl_bind_msg , KEY_NAME_SEID)->valuestring;
+    printf("[bind] SEID = %s" , seid);
+    src_sn = cJSON_GetObjectItem(g_xun_dl_bind_msg , KEY_NAME_SN)->valueint;
     only_add_required_eid = 1;
     
-    if( xun_get_phone_group_eid_list( &phone_group , only_add_required_eid ,  seid ) < RC_SUCCESS )
+    if(xun_get_phone_group_eid_list(&phone_group , only_add_required_eid,  seid) < RC_SUCCESS)
     {
         printf("[bind] get eid list failed\n");
         return RC_FAIL;
