@@ -1,0 +1,62 @@
+#make vos lib**.so
+
+PWD = `pwd`
+#APP_OBJ_DIR	  = 
+#XUN_OBJ_DIR   	  = $(APP_OBJ_DIR)/vos
+#xun_SOURCES	  = \
+#						${VOS_DIR}/cjons/src/cJSON.c \
+#						${VOS_DIR}/jsonMesg/src/server_client.c \
+#						${VOS_DIR}/msgQ/src/xun_action.c \
+#						${VOS_DIR}/msgQ/src/mesg_action.c \
+
+CURT_DIR	= $(shell pwd)
+XUN_OUT_DIR = $(CURT_DIR)/lib_out
+XUN_OBJ_DIR = $(CURT_DIR)
+xun_SOURCES	  = \
+						${XUN_OBJ_DIR}/cjons/src/cJSON.c \
+						${XUN_OBJ_DIR}/jsonMesg/src/server_client.c \
+						${XUN_OBJ_DIR}/msgQ/src/xun_action.c \
+						${XUN_OBJ_DIR}/msgQ/src/mesg_action.c \
+#						${VOS_DIR}/websocket/src/websocekt_main.c \
+						
+#INCLUDE_DIRS_VOS = \
+#						${VOS_DIR}/cjons/inc/cJSON.h \
+#						${VOS_DIR}/jsonMesg/inc/server_client.h \
+#						${VOS_DIR}/msgQ/inc/xun_action.h \
+#						${VOS_DIR}/msgQ/inc/xun_commut.h \
+#						${VOS_DIR}/msgQ/inc/xun_mesg_ipc.h \
+#						${VOS_DIR}/msgQ/inc/msg_com.h \
+
+INCLUDE_DIRS_XUN = \
+						-I${XUN_OBJ_DIR}/cjons/inc \
+						-I${XUN_OBJ_DIR}/jsonMesg/inc \
+						-I${XUN_OBJ_DIR}/msgQ/inc \
+						
+						
+#get direction						
+#VPATH += $(dir (xun_SOURCES))
+
+xun_OBJS := $(patsubst %.c,%.o,$(xun_SOURCES))
+#xun_OBJS = $(addprefix $(XUN_OBJ_DIR)/, $(addsuffix .o, $(basename $(notdir $(xun_SOURCES)))))
+
+default:all
+
+all: prebuild lib
+
+prebuild:
+#	mkdir -p $(XUN_OBJ_DIR)
+	[ -e XUN_OUT_DIR ] || mkdir -p $(XUN_OUT_DIR)
+#	echo $(xun_OBJS)
+#	echo $(XUN_OBJ_DIR)
+lib: $(xun_OBJS) 
+	echo "shanghaing"
+	$(GCC) -fPIC -share $(xun_OBJS) -o $@
+	
+${xun_OBJS}:$(xun_SOURCES)
+	echo "wuqiang"
+	gcc -o $@ -c $< $(INCLUDE_DIRS_XUN) $(CFLAGS)
+#	$(CC) -c $(CFLAGS) -fPIC $(INCLUDE_DIRS_XUN) $< -o $@
+#	$(CC) -c $(CFLAGS) -fPIC $(INCLUDE_DIRS_VOS) $< -o $@
+#	$(CC) -c $(CFLAGS) -fPIC $(INCLUDE_DIRS_VOS) $< -o $@
+clean:
+	//rm -rf $(XUN_OBJ_DIR)

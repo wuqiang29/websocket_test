@@ -8,7 +8,7 @@
 //#define WEBSOCKET_SERVER_DOMAIN			"test.imibaby.net"
 #define WEBSOCKET_SERVER_PORT				(8255)
 #define WEBSOCKET_SERVER_PATH				"/svc/pipe"
-#define WEBSOCKET_SSL_CA_PATH			"imibaby.net.pem"
+#define WEBSOCKET_SSL_CA_PATH			       "imibaby.net.pem"
 
 
 
